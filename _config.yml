@@ -1,2 +1,3 @@
 name: Zhipeng Cai, University of Adelaide
 markdown: kramdown
+permalink: /blog/:year/:month/:day/:title
