@@ -338,7 +338,7 @@ International Conference on Computer Vision (ICCV) 2019, <Highlight>oral</Highli
 </div> -->
 <div class="paper" id="ICCV19">
     <img class="paper" src="papers/ICCV19.png" title="ICCV19" />
-    <div> 
+    <div>
         Consensus Maximization Tree Search Revisited <br />
         <strong>Zhipeng Cai</strong>, Tat-Jun Chin, Vladlen Koltun <br />
         International Conference on Computer Vision (ICCV) 2019, <Highlight>oral</Highlight> presentation. <br />
@@ -346,42 +346,44 @@ International Conference on Computer Vision (ICCV) 2019, <Highlight>oral</Highli
         <a href='https://github.com/ZhipengCai/MaxConTreeSearch'> [Code] </a>
         <br />
 
-        <!-- Video placeholder div -->
-        <div id="youtubePlayer"></div>
+        <!-- This div will be replaced with the YouTube video iframe -->
+        <div id="player"></div>
+
+        <script src="https://www.youtube.com/iframe_api"></script>
+        <script>
+            var player;
+            var videoStarted = false;
+
+            function onYouTubeIframeAPIReady() {
+                player = new YT.Player('player', {
+                    height: '225',
+                    width: '400',
+                    videoId: 'my3jocjpD0U',
+                    events: {
+                        'onReady': onPlayerReady,
+                        'onStateChange': onPlayerStateChange
+                    }
+                });
+            }
+
+            function onPlayerReady(event) {
+                event.target.playVideo();
+            }
+
+            function onPlayerStateChange(event) {
+                // Check after a short delay if the video is still playing
+                setTimeout(() => {
+                    if (event.data == YT.PlayerState.PLAYING && !videoStarted) {
+                        player.pauseVideo();
+                        videoStarted = true;
+                    }
+                }, 500); // 500ms delay
+            }
+        </script>
     </div>
     <div class="spanner"></div>
 </div>
 
-<!-- Include the YouTube API -->
-<script src="https://www.youtube.com/iframe_api"></script>
-
-<script>
-    var player;
-    var videoStarted = false;  // Flag to track if the video has started playing
-
-    function onYouTubeIframeAPIReady() {
-        player = new YT.Player('youtubePlayer', {
-            height: '225',
-            width: '400',
-            videoId: 'my3jocjpD0U',
-            events: {
-                'onStateChange': onPlayerStateChange
-            },
-            playerVars: {
-                start: 157,
-                autoplay: 1  // This will autoplay the video
-            }
-        });
-    }
-
-    function onPlayerStateChange(event) {
-        // If the video starts playing (state 1) and videoStarted is false, pause it.
-        if (event.data == YT.PlayerState.PLAYING && !videoStarted) {
-            player.pauseVideo();
-            videoStarted = true;
-        }
-    }
-</script>
 
 
 
