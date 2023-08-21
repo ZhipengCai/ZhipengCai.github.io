@@ -361,25 +361,25 @@ International Conference on Computer Vision (ICCV) 2019, <Highlight>oral</Highli
                     videoId: 'my3jocjpD0U',
                     playerVars: {
                         'start': 5633,
-                        'autoplay': 1
+                        'autoplay': 0
                     },
                     events: {
-                        'onReady': onPlayerReady,
-                        'onStateChange': onPlayerStateChange
+                        'onReady': onPlayerReady
                     }
                 });
             }
 
             function onPlayerReady(event) {
                 event.target.playVideo();
+		player.pauseVideo();
             }
 
-            function onPlayerStateChange(event) {
-                if (event.data == YT.PlayerState.PLAYING && !initialized) {
-                    player.pauseVideo();
-                    initialized = true;
-                }
-            }
+            // function onPlayerStateChange(event) {
+            //     if (event.data == YT.PlayerState.PLAYING && !initialized) {
+            //         player.pauseVideo();
+            //         initialized = true;
+            //     }
+            // }
         </script>
     </div>
     <div class="spanner"></div>
