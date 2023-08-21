@@ -359,6 +359,10 @@ International Conference on Computer Vision (ICCV) 2019, <Highlight>oral</Highli
                     height: '225',
                     width: '400',
                     videoId: 'my3jocjpD0U',
+                    playerVars: {
+                        'start': 157,
+                        'autoplay': 1
+                    },
                     events: {
                         'onReady': onPlayerReady,
                         'onStateChange': onPlayerStateChange
@@ -371,18 +375,18 @@ International Conference on Computer Vision (ICCV) 2019, <Highlight>oral</Highli
             }
 
             function onPlayerStateChange(event) {
-                // Check after a short delay if the video is still playing
                 setTimeout(() => {
                     if (event.data == YT.PlayerState.PLAYING && !videoStarted) {
                         player.pauseVideo();
                         videoStarted = true;
                     }
-                }, 500); // 500ms delay
+                }, 500);
             }
         </script>
     </div>
     <div class="spanner"></div>
 </div>
+
 
 
 
