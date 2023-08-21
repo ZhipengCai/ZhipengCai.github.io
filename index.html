@@ -357,6 +357,7 @@ International Conference on Computer Vision (ICCV) 2019, <Highlight>oral</Highli
 
 <script>
     var player;
+    var videoStarted = false;  // Flag to track if the video has started playing
 
     function onYouTubeIframeAPIReady() {
         player = new YT.Player('youtubePlayer', {
@@ -374,12 +375,14 @@ International Conference on Computer Vision (ICCV) 2019, <Highlight>oral</Highli
     }
 
     function onPlayerStateChange(event) {
-        // If the video starts playing (state 1), immediately pause it.
-        if (event.data == YT.PlayerState.PLAYING) {
+        // If the video starts playing (state 1) and videoStarted is false, pause it.
+        if (event.data == YT.PlayerState.PLAYING && !videoStarted) {
             player.pauseVideo();
+            videoStarted = true;
         }
     }
 </script>
+
 
 
 <div class="paper" id="ISPRSJ18"><img class="paper" src="papers/Reg_Arch_visual_4.png" title="ISPRSJ18" />
