@@ -352,7 +352,7 @@ International Conference on Computer Vision (ICCV) 2019, <Highlight>oral</Highli
         <script src="https://www.youtube.com/iframe_api"></script>
         <script>
             var player;
-            var videoStarted = false;
+            var initialized = false;
 
             function onYouTubeIframeAPIReady() {
                 player = new YT.Player('player', {
@@ -375,17 +375,16 @@ International Conference on Computer Vision (ICCV) 2019, <Highlight>oral</Highli
             }
 
             function onPlayerStateChange(event) {
-                setTimeout(() => {
-                    if (event.data == YT.PlayerState.PLAYING && !videoStarted) {
-                        player.pauseVideo();
-                        videoStarted = true;
-                    }
-                }, 500);
+                if (event.data == YT.PlayerState.PLAYING && !initialized) {
+                    player.pauseVideo();
+                    initialized = true;
+                }
             }
         </script>
     </div>
     <div class="spanner"></div>
 </div>
+
 
 
 
